@@ -42,6 +42,7 @@
         android:id="@+id/btn_kill"
         android:layout_below="@+id/btn_trigger"
         android:layout_alignLeft="@+id/btn_trigger"
-        android:layout_alignStart="@+id/btn_trigger" />
+        android:layout_alignStart="@+id/btn_trigger"
+        android:visibility="invisible" />
 
 </RelativeLayout>

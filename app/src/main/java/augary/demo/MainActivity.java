@@ -31,11 +31,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         this.btnStart = (Button) findViewById(R.id.btn_start);
         this.btnStart.setOnClickListener(this);
 
-
+        // Note, don't use the kill button. It's for testing purposses
         this.btnKill = (Button) findViewById(R.id.btn_kill);
         this.btnKill.setOnClickListener(this);
 
-        AM = new AugaryManager(getApplicationContext(), "augary-test-0524-virgindemo", "RedNote52", false, false, false);
+        AM = new AugaryManager(getApplicationContext(), "Augary", "TestDevice", false, false, false);
 
     }
 
