@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Demo</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Virgindemo</string>
     <string name="action_settings">Settings</string>
 
 </resources>
