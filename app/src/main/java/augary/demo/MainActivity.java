@@ -1,5 +1,6 @@
 package augary.demo;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,11 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 
 import com.augary.app.*;
 
-
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener {
 
     AugaryManager AM;
 
@@ -31,11 +33,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         this.btnStart = (Button) findViewById(R.id.btn_start);
         this.btnStart.setOnClickListener(this);
 
-        // Note, don't use the kill button. It's for testing purposses
-        this.btnKill = (Button) findViewById(R.id.btn_kill);
-        this.btnKill.setOnClickListener(this);
 
-        AM = new AugaryManager(getApplicationContext(), "Augary", "TestDevice", false, false, false);
+        AM = new AugaryManager(getApplicationContext(), "Augary-demo", "TestDevice", true, true, true);
 
     }
 
@@ -44,6 +43,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         return true;
     }
 
@@ -51,6 +51,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void onResume() {
         super.onResume();
         AM.start();
+        notice("Started");
     }
 
 
@@ -69,6 +70,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
+    public void notice (String msg)
+    {
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.btn_trigger) {
@@ -77,35 +83,30 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
                 AM.triggerRecording(null);
                 //AM.triggerRecording();
+                notice("Recording triggered");
             } catch (Exception e) {
                 Log.i("###", "EXCEPTION ### in trigger recording ### " + e);
+                notice("Recording already in progress");
             }
+
         } else if (id == R.id.btn_stop) {
             try {
                 Log.i("###", "### FINALIZE ###");
                 AM.stop();
                 //AM.Finalize();
+                notice("Stopped");
             } catch (Exception e) {
                 Log.e("###", "### Exception in TheNewDemo finalize " + e);
+                notice("Please wait 10 seconds after starting before stopping.");
             }
+
 
         } else if (id == R.id.btn_start) {
             Log.i("###", "### RESTART ###");
             //AM = new AugaryManager(getBaseContext(), "augary-kiosk-3", true, true, false);
             //AM.Start();
             AM.start();
-        } else if (id == R.id.btn_kill) {
-            Log.i("###", "### KILLING IN THE NAME OF ###");
-            //AM = new AugaryManager(getBaseContext(), "augary-kiosk-3", true, true, false);
-            //AM.Start();
-            try {
-                Log.i("###", "### FINALIZE ###");
-                AM.stop();
-                //AM.Finalize();
-            } catch (Exception e) {
-                Log.e("###", "### Exception in TheNewDemo finalize " + e);
-            }
-            AM = null;
+            notice("Started");
         }
     }
 }
