@@ -1,13 +1,14 @@
 package augary.demo;
 
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -15,26 +16,21 @@ import com.augary.app.*;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    AugaryManager AM;
+    AugaryManager AM = null;
 
-    private Button btnStop, btnStart, btnTrigger, btnKill;
+    private Button btnStop, btnStart, btnTrigger, btnKill, btnInitialize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        this.btnStop = (Button) findViewById(R.id.btn_stop);
-        this.btnStop.setOnClickListener(this);
-
-        this.btnTrigger = (Button) findViewById(R.id.btn_trigger);
-        this.btnTrigger.setOnClickListener(this);
-
-        this.btnStart = (Button) findViewById(R.id.btn_start);
-        this.btnStart.setOnClickListener(this);
+        setContentView(R.layout.start_screen);
 
 
-        AM = new AugaryManager(getApplicationContext(), "Augary-demo", "TestDevice", true, true, true);
+        this.btnInitialize = (Button) findViewById(R.id.btn_initialize);
+        this.btnInitialize.setOnClickListener(this);
+
+        // Normally we would put this here, but we're using the configuration startup screen instead
+        // AM = new AugaryManager(getApplicationContext(), "Augary-demo", "TestDevice", true, false, false);
 
     }
 
@@ -50,7 +46,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        AM.start();
+        if (AM != null)
+            AM.start();
         notice("Started");
     }
 
@@ -107,6 +104,33 @@ public class MainActivity extends Activity implements View.OnClickListener {
             //AM.Start();
             AM.start();
             notice("Started");
+        } else if (id == R.id.btn_initialize)
+        {
+            EditText platform_id = (EditText)this.findViewById(R.id.editText);
+            EditText device_id = (EditText)this.findViewById(R.id.editText2);
+
+            CheckBox use_follow_distance = (CheckBox) this.findViewById(R.id.checkBox);
+            CheckBox use_black_box = (CheckBox) this.findViewById(R.id.checkBox2);
+            CheckBox use_augary_bbox_triggers = (CheckBox) this.findViewById(R.id.checkBox3);
+
+
+            AM = new AugaryManager(
+                    getApplicationContext(),                    // Application context, used for writing some files to disk
+                    platform_id.getText().toString(),           // Platform ID set by you to uniquely identify your platform devices. Ex: EastIndiaTradingCompany
+                    device_id.getText().toString(),             // Device ID set by you to uniquely identify your individual devices. Ex: FlyingDutchman0032
+                    use_black_box.isChecked(),                  // Enable use of Black Box module
+                    use_follow_distance.isChecked(),            // Enable use of Following Distance module
+                    use_augary_bbox_triggers.isChecked());      // Enable Augary's custom triggers for Black Box recording (triggerRecording() can always be used by developer regardless of this flag)
+            setContentView(R.layout.activity_main);
+
+            this.btnStop = (Button) findViewById(R.id.btn_stop);
+            this.btnStop.setOnClickListener(this);
+
+            this.btnTrigger = (Button) findViewById(R.id.btn_trigger);
+            this.btnTrigger.setOnClickListener(this);
+
+            this.btnStart = (Button) findViewById(R.id.btn_start);
+            this.btnStart.setOnClickListener(this);
         }
     }
 }

@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:text="Stop"
         android:id="@+id/btn_stop"
-        android:layout_below="@+id/btn_start"
-        android:layout_alignLeft="@+id/btn_start"
-        android:layout_alignStart="@+id/btn_start"
+        android:layout_below="@+id/btn_initialize"
+        android:layout_alignLeft="@+id/btn_initialize"
+        android:layout_alignStart="@+id/btn_initialize"
         android:layout_gravity="right|bottom" />
 
     <Button
