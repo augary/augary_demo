@@ -75,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText"
-        android:text="Sidecar"
+        android:text="test_platform"
         android:layout_above="@+id/editText2"
         android:layout_toRightOf="@+id/btn_initialize"
         android:layout_alignRight="@+id/checkBox3"
