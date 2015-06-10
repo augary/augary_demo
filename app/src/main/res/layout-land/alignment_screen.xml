@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:onClick="onClick"
+    android:tag="camera_preview"
+    >
+    <!--
+    <SurfaceView
+        android:id="@+id/surface_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    -->
+
+
+    <ImageView
+        android:id="@+id/imagePreview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:scaleType="fitXY"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/btn_preview" android:layout_gravity="center"
+        android:visibility="invisible"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:id="@+id/btn_layout">
+
+
+        <SurfaceView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/surfaceView"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/btn_preview2" android:layout_gravity="center"
+            android:visibility="invisible"
+            android:enabled="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@drawable/horizon_guide"
+            android:layout_gravity="center_horizontal|bottom"
+            android:id="@+id/horizon_guide"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:clickable="true"
+            android:onClick="onClick" />
+
+        <View
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/leftlane_guide"
+            android:layout_gravity="left|bottom"
+            android:id="@+id/leftlane_guide"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/horizon_label"
+            android:clickable="true"
+            android:onClick="onClick" />
+
+        <View
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rightlane_guide"
+            android:layout_gravity="right|bottom"
+            android:id="@+id/rightlane_guide"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/horizon_label"
+            android:clickable="true"
+            android:onClick="onClick" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/horizon_label"
+            android:text="Horizon"
+            android:textColor="#880"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:background="@android:color/transparent"
+            android:editable="false"
+            android:layout_below="@+id/horizon_guide"
+            android:layout_alignRight="@+id/rightlane_guide"
+            android:layout_alignEnd="@+id/rightlane_guide"
+            android:clickable="true"
+            android:onClick="onClick" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title_guide"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            android:text="Please align the device using the horizon and lane guides, then tighten the mount. Click anywhere when finished."
+            android:textColor="#6f6"
+            android:textAlignment="center"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:editable="false"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lanes_label"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Lane"
+            android:textColor="#F00"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:background="@android:color/transparent"
+            android:autoText="true"
+            android:editable="false"
+            android:clickable="true"
+            android:onClick="onClick"/>
+
+    </RelativeLayout>
+
+
+</FrameLayout>
