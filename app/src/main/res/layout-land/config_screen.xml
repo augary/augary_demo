@@ -14,10 +14,10 @@
         android:text="Enable Following Distance"
         android:id="@+id/checkBox"
         android:layout_gravity="center_vertical"
-        android:layout_above="@+id/checkBox2"
+        android:checked="true"
+        android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:checked="true" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -46,20 +46,20 @@
         android:layout_height="wrap_content"
         android:text="Enable Black Box"
         android:id="@+id/checkBox2"
-        android:layout_above="@+id/checkBox3"
+        android:checked="true"
+        android:layout_below="@+id/checkBox"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:checked="true" />
+        android:layout_alignParentStart="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Use Augary Black Box Triggers"
         android:id="@+id/checkBox3"
-        android:layout_above="@+id/editText"
+        android:checked="false"
+        android:layout_below="@+id/checkBox2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:checked="false" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText"
-        android:text="test_platform"
+        android:text="testplatform"
         android:layout_above="@+id/editText2"
         android:layout_toRightOf="@+id/btn_initialize"
         android:layout_alignRight="@+id/checkBox3"

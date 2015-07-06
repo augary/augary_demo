@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Activity;
 import android.os.Bundle;
@@ -22,6 +23,8 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.Toast;
+import android.provider.Settings.Secure;
+
 
 
 import com.augary.app.*;
@@ -134,7 +137,7 @@ public class MainActivity extends Activity implements View.OnClickListener  , Su
     /**********************************************
      *
      *
-     * Other stuff
+     *       Other stuff
      *
      *
      *********************************************************88*/
@@ -153,7 +156,7 @@ public class MainActivity extends Activity implements View.OnClickListener  , Su
     // state == 1   -->   alignment screen
     // state == 2   -->   main screen
 
-    private CameraPreview mPreview;
+    //private CameraPreview mPreview;
     private RelativeLayout relativeLayout;
     private MainActivity myContext;
     private Camera mCamera;
@@ -163,6 +166,13 @@ public class MainActivity extends Activity implements View.OnClickListener  , Su
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.config_screen);
+
+
+            String android_id = Secure.getString(getContentResolver(),Secure.ANDROID_ID);
+
+            EditText tv = (EditText) findViewById(R.id.editText2);
+            tv.setText(""+android_id);
+
         this.btnInitialize = (Button) findViewById(R.id.btn_initialize);
         this.btnInitialize.setOnClickListener(this);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -352,6 +362,7 @@ public class MainActivity extends Activity implements View.OnClickListener  , Su
             CheckBox use_black_box = (CheckBox) this.findViewById(R.id.checkBox2);
             CheckBox use_augary_bbox_triggers = (CheckBox) this.findViewById(R.id.checkBox3);
 
+            int orientation = -1;
 
             AM = new AugaryManager(
                     getApplicationContext(),                    // Application context, used for writing some files to disk
@@ -359,7 +370,11 @@ public class MainActivity extends Activity implements View.OnClickListener  , Su
                     device_id.getText().toString(),             // Device ID set by you to uniquely identify your individual devices. Ex: FlyingDutchman0032
                     use_black_box.isChecked(),                  // Enable use of Black Box module
                     use_follow_distance.isChecked(),            // Enable use of Following Distance module
-                    use_augary_bbox_triggers.isChecked());      // Enable Augary's custom triggers for Black Box recording (triggerRecording() can always be used by developer regardless of this flag)
+                    use_augary_bbox_triggers.isChecked(),       // Enable Augary's custom triggers for Black Box recording (triggerRecording() can always be used by developer regardless of this flag)
+                    orientation,                                // orientation of the device
+                    1,                                         // JPEG quality
+                    3                                           // seconds to record before and after
+            );
 
             setContentView(R.layout.alignment_screen);
 
@@ -383,9 +398,6 @@ public class MainActivity extends Activity implements View.OnClickListener  , Su
 
         } else if (id == R.id.btn_layout)
         {
-
-
-
             setContentView(R.layout.main_screen);
 
             this.btnStop = (Button) findViewById(R.id.btn_stop);
@@ -410,8 +422,6 @@ public class MainActivity extends Activity implements View.OnClickListener  , Su
             AM.start();
             started = true;
             notice("Augary Started");
-
-
 
         }
     }
