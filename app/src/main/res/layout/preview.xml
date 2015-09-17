@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:onClick="onClick"
+    android:tag="camera_preview"
+    >
+    <!--
+    <SurfaceView
+        android:id="@+id/surface_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    -->
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button2" android:layout_gravity="center"
+        android:visibility="invisible"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:clickable="true"
+        android:onClick="onClick">
+
+
+        <ImageView
+            android:id="@+id/imagePreview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            android:scaleType="fitXY"
+            android:onClick="onClick"
+            android:layout_toStartOf="@+id/horizon_label"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/button" android:layout_gravity="center"
+            android:visibility="invisible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@drawable/horizon_guide"
+            android:layout_gravity="center_horizontal|bottom"
+            android:id="@+id/horizon_guide"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:clickable="true"
+            android:onClick="onClick" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/horizon_label"
+            android:text="Horizon"
+            android:textColor="#880"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:background="@android:color/transparent"
+            android:editable="false"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:layout_above="@+id/horizon_guide"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title_guide"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            android:text="Please align the horizon line and point the device straight ahead. Touch the screen to continue."
+            android:textColor="#6f6"
+            android:textAlignment="center"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:editable="false"
+            android:clickable="true"
+            android:onClick="onClick" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@drawable/up_green_arrow"
+            android:layout_below="@+id/horizon_guide"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

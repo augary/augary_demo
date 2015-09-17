@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 22
+    buildToolsVersion '21.1.2'
 
     defaultConfig {
-        applicationId "augary.demo"
+        applicationId "com.augary.previewdemo"
         minSdkVersion 15
-        targetSdkVersion 21
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
@@ -21,10 +21,10 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:appcompat-v7:22.2.0'
     compile files('libs/augary_android.jar')
     compile files('libs/httpmime-4.2.5.jar')
     compile files('libs/jcodec.jar')
     compile files('libs/libsvm.jar')
-    compile files('libs/opencvlibrary-2.4.8.2.jar')
+    compile files('libs/opencv library - 2.4.8.2.jar')
 }
